@@ -26,5 +26,11 @@
         inherit librewolf;
         default = librewolf;
       };
-    });
+    })
+    // {
+      overlays = rec {
+        default = librewolf;
+        librewolf = final: prev: {inherit (self.packages.${final.system}) librewolf;};
+      };
+    };
 }
